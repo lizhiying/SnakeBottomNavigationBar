@@ -31,18 +31,23 @@ class SnakeItemTile extends StatelessWidget {
     return Expanded(
       child: GestureDetector(
         onTap: () => notifier.selectIndex(position),
-        child: Center(
-          child: LayoutBuilder(
-            builder: (context, constraint) {
-              if (isSelected)
-                return theme.showSelectedLabels
-                    ? _getLabeledItem(theme)
-                    : _getThemedIcon(theme);
-              else
-                return theme.showUnselectedLabels
-                    ? _getLabeledItem(theme)
-                    : _getThemedIcon(theme);
-            },
+        child: Container(
+          decoration: new BoxDecoration(
+            border: Border.all(color: Colors.transparent, width: 0.1),
+          ),
+          child: Center(
+            child: LayoutBuilder(
+              builder: (context, constraint) {
+                if (isSelected)
+                  return theme.showSelectedLabels
+                      ? _getLabeledItem(theme)
+                      : _getThemedIcon(theme);
+                else
+                  return theme.showUnselectedLabels
+                      ? _getLabeledItem(theme)
+                      : _getThemedIcon(theme);
+              },
+            ),
           ),
         ),
       ),
